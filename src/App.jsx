@@ -9,6 +9,7 @@ import * as puppyService from './services/puppyService'
 import Landing from './pages/Landing/Landing'
 import PuppyList from './pages/PuppyList/PuppyList'
 import NewPuppy from './pages/NewPuppy/NewPuppy'
+import EditPuppy from './pages/EditPuppy/EditPuppy'
 
 // components
 import Nav from './components/Nav'
@@ -36,6 +37,13 @@ const App = () => {
     setPuppies(puppies.filter(p => p._id !== removedPuppy._id))
   }
 
+  const handleUpdatePuppy = async updatedPuppyFormData => {
+    // API call will go here
+    setPuppies(puppies.map(p => p._id === updatedPuppyFormData._id ? updatedPuppyFormData : p))
+    navigate('/puppies')
+  }
+
+
   return (
     <>
       <Nav />
@@ -43,6 +51,7 @@ const App = () => {
         <Route path='/' element={<Landing />} />
         <Route path='/puppies' element={<PuppyList handleRemovePuppy={handleRemovePuppy} puppies={puppies} />} />
         <Route path='/puppies/new' element={<NewPuppy handleAddPuppy={handleAddPuppy} />} />
+        <Route path='/puppies/edit' element={<EditPuppy handleUpdatePuppy={handleUpdatePuppy} />}/>
       </Routes>
     </>
   )

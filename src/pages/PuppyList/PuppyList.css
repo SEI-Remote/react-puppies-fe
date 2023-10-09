@@ -66,6 +66,10 @@ li button:active {
   transform: scale(0.92);
 }
 
+li > a {
+  border: none;
+}
+
 @media only screen and (min-width: 800px) {
   .list ul {
     grid-template-columns: repeat(2, 1fr);
