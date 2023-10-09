@@ -14,6 +14,7 @@ import Nav from './components/Nav'
 
 const App = () => {
   const [puppies, setPuppies] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchPuppies = async () => {
@@ -22,6 +23,12 @@ const App = () => {
     }
     fetchPuppies()
   }, [])
+
+  const handleAddPuppy = async formData => {
+    const newPuppy = await puppyService.create(formData)
+    setPuppies([newPuppy, ...puppies])
+    navigate('/puppies')
+  }
 
   return (
     <>
