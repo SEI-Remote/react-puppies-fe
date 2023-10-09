@@ -38,8 +38,8 @@ const App = () => {
   }
 
   const handleUpdatePuppy = async updatedPuppyFormData => {
-    // API call will go here
-    setPuppies(puppies.map(p => p._id === updatedPuppyFormData._id ? updatedPuppyFormData : p))
+    const updatedPuppy = await puppyService.updatePuppy(updatedPuppyFormData)
+    setPuppies(puppies.map(p => p._id === updatedPuppy._id ? updatedPuppy : p))
     navigate('/puppies')
   }
 
