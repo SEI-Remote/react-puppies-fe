@@ -8,6 +8,7 @@ import * as puppyService from './services/puppyService'
 // pages
 import Landing from './pages/Landing/Landing'
 import PuppyList from './pages/PuppyList/PuppyList'
+import NewPuppy from './pages/NewPuppy/NewPuppy'
 
 // components
 import Nav from './components/Nav'
@@ -36,6 +37,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/puppies' element={<PuppyList puppies={puppies} />} />
+        <Route path='/puppies/new' element={<NewPuppy handleAddPuppy={handleAddPuppy} />} />
       </Routes>
     </>
   )
