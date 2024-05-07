@@ -35,6 +35,11 @@ function App() {
     navigate('/puppies')
   }
 
+  const handleRemovePuppy = async puppyId => {
+    const removedPuppy = await puppyService.delete(puppyId)
+    setPuppies(puppies.filter(p => p._id !== removedPuppy._id))
+  }
+
   return (
     <>
       <Nav />
@@ -42,7 +47,12 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route 
           path='/puppies' 
-          element={<PuppyList puppies={puppies} />} 
+          element={
+            <PuppyList 
+              handleRemovePuppy={handleRemovePuppy} 
+              puppies={puppies} 
+            />
+          } 
         />
         <Route 
           path='/puppies/new' 
