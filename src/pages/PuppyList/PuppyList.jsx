@@ -1,3 +1,6 @@
+// components
+import PuppyCard from '../../components/PuppyCard/PuppyCard'
+
 // css
 import './PuppyList.css'
 
@@ -10,9 +13,7 @@ const PuppyList = (props) => {
 
       <ul>
         {props.puppies.map(puppy =>
-          <li key={puppy._id}>
-            {puppy.name}
-          </li>
+          <PuppyCard key={puppy._id} puppy={puppy} />
         )}
       </ul>
     </main>
