@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 // pages
 import Landing from './pages/Landing/Landing'
 import PuppyList from './pages/PuppyList/PuppyList'
+import NewPuppy from './pages/NewPuppy/NewPuppy'
 
 // components
 import Nav from './components/Nav/Nav'
@@ -17,6 +18,7 @@ import * as puppyService from './services/puppyService'
 
 
 function App() {
+  const navigate = useNavigate()
   const [puppies, setPuppies] = useState([])
 
   useEffect(() => {
@@ -27,6 +29,12 @@ function App() {
     fetchPuppies()
   }, [])
 
+  const handleAddPuppy = async formData => {
+    const newPuppy = await puppyService.create(formData)
+    setPuppies([newPuppy, ...puppies])
+    navigate('/puppies')
+  }
+
   return (
     <>
       <Nav />
@@ -35,6 +43,10 @@ function App() {
         <Route 
           path='/puppies' 
           element={<PuppyList puppies={puppies} />} 
+        />
+        <Route 
+          path='/puppies/new' 
+          element={<NewPuppy handleAddPuppy={handleAddPuppy} />} 
         />
       </Routes>
     </>
