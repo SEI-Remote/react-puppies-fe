@@ -1,6 +1,9 @@
 // npm modules
 import { NavLink } from "react-router-dom"
 
+// components
+import PuppyIcon from "../PuppyIcon/PuppyIcon"
+
 const PuppyCard = ({ puppy, handleRemovePuppy }) => {
   return (
     <li>
@@ -17,6 +20,7 @@ const PuppyCard = ({ puppy, handleRemovePuppy }) => {
           </button>
         </NavLink>
       </section>
+      <PuppyIcon puppy={puppy} />
       <h2>{puppy.name.toUpperCase()}</h2>
       <p>A {puppy.age}-year old {puppy.breed}</p>
     </li>
