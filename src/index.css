@@ -59,7 +59,7 @@ main div:has(canvas) {
   height: 350px !important;
 }
 
-a {
+nav > a {
   margin: 0 8px;
   color: white;
   font-weight: 500;

@@ -35,9 +35,26 @@ async function deletePuppy(puppyId) {
   }
 }
 
+async function update(formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${formData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+
+
+}
+
 export {
   index,
   create,
   deletePuppy as delete,
-
+  update
 }

@@ -1,0 +1,47 @@
+.new {
+  display: flex;
+  color: white;
+  min-height: 100%;
+  margin-top: 60px;
+  justify-content: flex-start;
+}
+
+form {
+  max-width: 755px;
+}
+
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  font-size: 14px;
+  resize: vertical;
+  border-radius: 5px;
+  background: #f4f9fa;
+  margin: 7px 0px 14px 0px;
+  border: 1.5px solid #dfe6e8;
+  box-shadow: inset 5px 5px 6px #e0e5e6, inset -5px -5px 6px #f8fdfe;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 1.5px solid rgb(240, 240, 240);
+}
+
+button[type="submit"] {
+  color: white;
+  box-shadow: none;
+  font-weight: 600;
+  background: rgb(70, 215, 255, .75);
+  border: 1.5px solid rgba(255, 255, 255, .6);
+}

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Landing from './pages/Landing/Landing'
 import PuppyList from './pages/PuppyList/PuppyList'
 import NewPuppy from './pages/NewPuppy/NewPuppy'
+import EditPuppy from './components/EditPuppy/EditPuppy'
 
 // components
 import Nav from './components/Nav/Nav'
@@ -37,7 +38,13 @@ function App() {
 
   const handleRemovePuppy = async puppyId => {
     const removedPuppy = await puppyService.delete(puppyId)
-    setPuppies(puppies.filter(p => p._id !== removedPuppy._id))
+    setPuppies(puppies.filter(puppy => puppy._id !== removedPuppy._id))
+  }
+
+  const handleUpdatePuppy = async formData => {
+    const updatedPuppy = await puppyService.update(formData)
+    setPuppies(puppies.map(puppy => puppy._id === updatedPuppy._id ? updatedPuppy : puppy))
+    navigate('/puppies')
   }
 
   return (
@@ -57,6 +64,12 @@ function App() {
         <Route 
           path='/puppies/new' 
           element={<NewPuppy handleAddPuppy={handleAddPuppy} />} 
+        />
+        <Route 
+          path='/puppies/edit' 
+          element={
+            <EditPuppy handleUpdatePuppy={handleUpdatePuppy} />
+          } 
         />
       </Routes>
     </>
