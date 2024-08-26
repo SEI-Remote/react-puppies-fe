@@ -24,7 +24,19 @@ async function create(formData) {
   }
 }
 
+async function deletePuppy(puppyId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${puppyId}`, {
+      method: 'DELETE'
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
-  create
+  create,
+  deletePuppy as delete
 }
