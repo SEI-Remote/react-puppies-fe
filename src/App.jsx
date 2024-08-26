@@ -29,11 +29,8 @@ function App() {
   }, [])
 
   const handleAddPuppy = async formData => {
-    //// call API with formData
     const newPuppy = await puppyService.create(formData)
-    //// set state with newPuppy returned from API
     setPuppies([newPuppy, ...puppies])
-    //// navigate to PuppyList
     navigate('/puppies')
   }
 
