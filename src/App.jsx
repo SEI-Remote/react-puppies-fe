@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 // pages
 import Landing from './pages/Landing/Landing'
 import PuppyList from './pages/PuppyList/PuppyList'
+import NewPuppy from './pages/NewPuppy/NewPuppy'
 
 // components
 import Nav from './components/Nav/Nav'
@@ -34,6 +35,10 @@ function App() {
         <Route 
           path='/puppies' 
           element={<PuppyList puppies={puppies} />} 
+        />
+        <Route 
+          path='/puppies/new' 
+          element={<NewPuppy />}
         />
       </Routes>
     </>
