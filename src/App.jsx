@@ -18,6 +18,7 @@ import * as puppyService from './services/puppyService'
 
 function App() {
   const [puppies, setPuppies] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchPuppies = async () => {
@@ -26,6 +27,15 @@ function App() {
     }
     fetchPuppies()
   }, [])
+
+  const handleAddPuppy = async formData => {
+    //// call API with formData
+    const newPuppy = await puppyService.create(formData)
+    //// set state with newPuppy returned from API
+    setPuppies([newPuppy, ...puppies])
+    //// navigate to PuppyList
+    navigate('/puppies')
+  }
 
   return (
     <>
@@ -38,7 +48,7 @@ function App() {
         />
         <Route 
           path='/puppies/new' 
-          element={<NewPuppy />}
+          element={<NewPuppy handleAddPuppy={handleAddPuppy} />}
         />
       </Routes>
     </>

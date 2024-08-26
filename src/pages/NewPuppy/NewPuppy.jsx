@@ -17,10 +17,15 @@ const NewPuppy = (props) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
 
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    props.handleAddPuppy(formData)
+  }
+
   return (
     <main className="new">
       <h1>NEW PUPPY</h1>
-      <form autoComplete="off">
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <label htmlFor="name-input">Name</label>
         <input
           required
