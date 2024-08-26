@@ -31,7 +31,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/puppies' element={<PuppyList />} />
+        <Route 
+          path='/puppies' 
+          element={<PuppyList puppies={puppies} />} 
+        />
       </Routes>
     </>
   )
